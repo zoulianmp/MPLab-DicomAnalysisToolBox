@@ -28,7 +28,7 @@ def RunTree(w, filename):
 
 def show_file(filename, tree):
     tree.hlist.add("root", text=filename)
-    ds = dicom.read_file(sys.argv[1])
+    ds = dicom.read_file(filename,force= True)
     ds.decode()  # change strings to unicode
     recurse_tree(tree, ds, "root", False)
     tree.autosetmode()
@@ -55,12 +55,68 @@ def recurse_tree(tree, dataset, parent, hide=False):
 if __name__ == '__main__':
     import sys
     import dicom
-    if len(sys.argv) != 2:
-        print "Please supply a dicom file name:\n"
-        print usage
-        sys.exit(-1)
-    root = Tix.Tk()
-    root.geometry("%dx%d%+d%+d" % (800, 600, 0, 0))
     
-    RunTree(root, sys.argv[1])
-    root.mainloop()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    if len(sys.argv) == 2:
+             
+        root = Tix.Tk()
+        root.geometry("%dx%d%+d%+d" % (800, 600, 0, 0))
+        
+        RunTree(root, sys.argv[1])
+        root.mainloop()
+        
+    
+    else:
+        
+        root = Tix.Tk()
+        root.geometry("%dx%d%+d%+d" % (800, 600, 0, 0))
+        
+        folder = "C:\\Users\\zoulian\\Desktop\\magicalphantomtest"
+        
+        filename = "\\templatedataset.dcm"
+        
+        path1 = folder + filename
+        
+        dataset = dicom.read_file(path1,force=True)
+        
+        print dataset
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        path = folder + filename
+    
+        RunTree(root, path)
+        root.mainloop()
+
+
+        root1 = Tix.Tk()
+        root1.geometry("%dx%d%+d%+d" % (800, 600, 0, 0))
+        
+        folder1 = "C:\\Users\\zoulian\\Desktop\\magicalphantomtest"
+        
+        filename1 = "\\CTI.201407070501.0010814101700004.96.Zhou_li_rong"
+        
+        path1 = folder + filename
+    
+        RunTree(root1, path1)
+        root1.mainloop()

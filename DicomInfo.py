@@ -19,6 +19,18 @@ the image.
 import sys
 import dicom
 
+
+
+
+
+
+
+
+
+
+
+
+
 # check command line arguments make sense
 if not 1 < len(sys.argv) < 4:
     print __doc__
